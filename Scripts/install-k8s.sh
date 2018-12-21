@@ -14,3 +14,13 @@ EOF
 setenforce 0
 yum install -y kubelet kubeadm kubectl
 systemctl enable kubelet && systemctl start kubelet
+
+swapoff -a && sysctl -w vm.swappiness=0
+
+cat << EOF | tee /etc/sysctl.d/k8s.conf
+net.ipv4.ip_forward = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+
+sysctl -p /etc/sysctl.d/k8s.conf
