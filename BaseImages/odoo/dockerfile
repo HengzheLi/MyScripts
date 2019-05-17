@@ -1,0 +1,29 @@
+FROM debian:stretch
+MAINTAINER Hengzhe Li <li-0803@163.com>
+
+# Generate locale C.UTF-8 for postgres and general locale data
+ENV LANG C.UTF-8
+
+# Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
+RUN set -x; \
+        apt-get update \
+        && apt-get install -y --no-install-recommends \
+            ca-certificates \
+            curl \
+            libssl1.0-dev \
+            node-less \
+            python3-pip \
+            python3-pyldap \
+            python3-qrcode \
+            python3-renderpm \
+            python3-setuptools \
+            python3-vobject \
+            python3-watchdog \
+            xz-utils \
+        && curl -o wkhtmltox.deb -SL https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb \
+        && dpkg --force-depends -i wkhtmltox.deb\
+        && apt-get -y install -f --no-install-recommends \
+        && rm -rf /var/lib/apt/lists/* wkhtmltox.deb
+
+RUN pip3 install num2words xlwt
+CMD /bin/bash
