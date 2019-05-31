@@ -1,0 +1,4 @@
+FROM registry.cn-beijing.aliyuncs.com/mohun/odoobase
+
+RUN pip3 install ptvsd
+CMD /bin/bash
