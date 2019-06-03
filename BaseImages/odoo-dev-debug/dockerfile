@@ -1,4 +1,12 @@
 FROM registry.cn-beijing.aliyuncs.com/mohun/odoobase
 
-RUN pip3 install ptvsd
-CMD /bin/bash
+RUN pip3 install ptvsd \
+    && mkdir /odoodebug
+
+ENV DebuggerPort=55678 OdooHttpPort=8069 OdooXmlRPC=8071 LongPullingPort=8072
+
+VOLUME [ "/odoodebug" ]
+
+EXPOSE ${DebuggerPort} ${OdooHttpPort} ${OdooXmlRPC} ${LongPullingPort}
+WORKDIR /odoodebug
+CMD python ./remotedebug.py
