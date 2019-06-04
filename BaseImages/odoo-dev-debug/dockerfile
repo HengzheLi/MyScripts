@@ -9,4 +9,4 @@ VOLUME [ "/odoodebug" ]
 
 EXPOSE ${DebuggerPort} ${OdooHttpPort} ${OdooXmlRPC} ${LongPullingPort}
 WORKDIR /odoodebug
-CMD python ./remotedebug.py
+CMD python3 ./remotedebug.py
