@@ -1,5 +1,5 @@
 FROM debian:stretch
-MAINTAINER Hengzhe Li <li-0803@163.com>
+LABEL Author="Hengzhe Li <li-0803@163.com>"
 
 # Generate locale C.UTF-8 for postgres and general locale data
 ENV LANG C.UTF-8
@@ -41,5 +41,8 @@ RUN set -x; \
         && apt-get install -y postgresql-client \
         && rm -rf /var/lib/apt/lists/*
 
+COPY requirements.txt requirements.txt
+
+RUN pip3 install -r requirements.txt
 RUN pip3 install num2words xlwt
 CMD /bin/bash
