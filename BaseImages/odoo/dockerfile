@@ -51,4 +51,12 @@ COPY requirements.txt requirements.txt
 
 RUN pip3 install num2words xlwt wheel
 RUN pip3 install -r requirements.txt
+
+RUN apt-get uninstall libssl1.0-dev \
+    build-essential \
+    autoconf \
+    libtool \
+    pkg-config \
+    libsasl2-dev libldap2-dev
+
 CMD /bin/bash
