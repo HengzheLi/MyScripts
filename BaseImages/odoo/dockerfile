@@ -19,8 +19,10 @@ RUN set -x; \
             autoconf \
             libtool \
             pkg-config \
+            ldap-utils \
             python3-dev \
             python3-pip \
+            python3-pyldap \
             python3-qrcode \
             python3-renderpm \
             python3-setuptools \
@@ -47,6 +49,6 @@ RUN set -x; \
 
 COPY requirements.txt requirements.txt
 
-RUN pip3 install num2words xlwt wheel python3-ldap
+RUN pip3 install num2words xlwt wheel
 RUN pip3 install -r requirements.txt
 CMD /bin/bash
