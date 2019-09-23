@@ -1,0 +1,8 @@
+FROM debian:stretch
+
+RUN apt-get update && apt-get upgrade
+RUN sudo apt-get install mysql-client
+RUN sudo apt-get install apach2 php5 php5-mysql php5-gd phpmyadmin
+
+RUN mkdir /app
+COPY discuz /app
