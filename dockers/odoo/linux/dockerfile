@@ -1,5 +1,5 @@
 FROM debian:stretch
-MAINTAINER Hengzhe Li <li-0803@163.com>
+LABEL Author="Hengzhe Li <li-0803@163.com>"
 
 # Generate locale C.UTF-8 for postgres and general locale data
 ENV LANG C.UTF-8
