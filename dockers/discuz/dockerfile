@@ -1,7 +1,6 @@
 FROM debian
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install mysql-client -y
 RUN apt-get install apache2 -y
 
 RUN mkdir /app

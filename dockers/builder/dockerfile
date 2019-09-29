@@ -1,0 +1,10 @@
+FROM ubuntu
+
+RUN apt update && apt upgrade -y
+RUN apt install ansible -y
+
+RUN mkdir /src
+
+VOLUME ["/src"] 
+
+CMD bash
