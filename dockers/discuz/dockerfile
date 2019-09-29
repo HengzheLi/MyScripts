@@ -1,8 +1,5 @@
-FROM debian
-
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install mysql-client -y
-RUN apt-get install apache2 -y
-
-RUN mkdir /app
-COPY discuz /app
+FROM richarvey/nginx-php-fpm
+COPY src/* /var/www/html
+COPY install.sh /install.sh
+VOLUME /var/www/html
+CMD /start.sh
