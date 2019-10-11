@@ -6,7 +6,7 @@ ENV LANG C.UTF-8
 
 # Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
 RUN set -x; \
-        apt-get update \
+        apt-get update && apt-get upgrade -y \
         && apt-get install -y --no-install-recommends \
             ca-certificates \
             curl \
@@ -27,7 +27,6 @@ RUN set -x; \
             python3-renderpm \
             python3-setuptools \
             python3-vobject \
-            python3-watchdog \
             xz-utils \
         && curl -o wkhtmltox.deb -SL https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb \
         && dpkg --force-depends -i wkhtmltox.deb\
@@ -53,6 +52,7 @@ RUN pip3 install num2words xlwt wheel
 RUN pip3 install -r requirements.txt
 
 RUN apt-get --purge remove -y libssl1.0-dev \
+    python3-dev \
     build-essential \
     autoconf \
     libtool \
