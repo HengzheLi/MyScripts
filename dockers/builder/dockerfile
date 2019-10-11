@@ -1,10 +1,11 @@
-FROM ubuntu
+FROM mcr.microsoft.com/powershell:ubuntu-16.04
 
 RUN apt update && apt upgrade -y
-RUN apt install ansible -y
+RUN apt install ansible git -y
+RUN apt install docker -y
 
-RUN mkdir /src
+RUN mkdir /builder && mkdir /builder/src && mkdir /builder/artifacts
 
-VOLUME ["/src"] 
+VOLUME ["/builder/src", "/builder/artifacts"] 
 
 CMD bash
