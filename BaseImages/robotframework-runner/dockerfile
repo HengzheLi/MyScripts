@@ -7,3 +7,5 @@ RUN mkdir /home/automations
 RUN pip install -r /home/requirements.txt
 
 VOLUME [ "/home/automations" ]
+
+WORKDIR /home/automations

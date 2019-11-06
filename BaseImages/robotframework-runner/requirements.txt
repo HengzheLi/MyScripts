@@ -1,0 +1,5 @@
+requests
+robotframework
+robotframework-requests
+robotframework-seleniumlibrary
+webdrivermanager
