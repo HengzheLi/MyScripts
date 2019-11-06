@@ -1,0 +1,9 @@
+FROM python:3.6.9-alpine3.9
+LABEL author="hengzhe li"
+
+COPY . /home
+
+RUN mkdir /home/automations
+RUN pip install -r /home/requirements.txt
+
+VOLUME [ "/home/automations" ]
